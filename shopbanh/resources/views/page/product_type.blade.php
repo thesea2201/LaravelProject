@@ -1,5 +1,5 @@
 @extends('layout')
-@section('title')SSB|{{$productByTypes->first()->name}}
+@section('title'){{$productByTypes->first()->name}}
 @endsection('title')
 @section('content')
 <div class="inner-header">
@@ -9,7 +9,7 @@
 		</div>
 		<div class="pull-right">
 			<div class="beta-breadcrumb font-large">
-				<a href="index.html">Home</a> / <span>Sản phẩm</span>
+				<a href="{{ route('home') }}">Home</a> / <span>Sản phẩm</span>
 			</div>
 		</div>
 		<div class="clearfix"></div>
@@ -63,23 +63,23 @@
 									<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
-										<a href="product.html"><img src="source/image/product/{{$productByType->image}}" alt="{{$productByType->name}}"></a>
+										<a href="{{ route('product',$productByType->id) }}"><img src="source/image/product/{{$productByType->image}}" alt="{{$productByType->name}}" title="{{ $productByType->name }}"></a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">{{$productByType->name}}</p>
 										<p class="single-item-price">
 											@if($productByType->promotion_price == 0)
-											<span>{{$productByType->unit_price}}đ</span>
+											<span>{{ number_format($productByType->unit_price) }}đ</span>
 											@else
 
-											<span class="flash-del">{{$productByType->unit_price}}đ</span>
-											<span class="flash-sale">{{$productByType->promotion_price}}đ</span>
+											<span class="flash-del">{{ number_format($productByType->unit_price) }}đ</span>
+											<span class="flash-sale">{{ number_format($productByType->promotion_price) }}đ</span>
 											@endif
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+										<a class="add-to-cart pull-left" href="{{ route('add-to-cart',$productByType->id) }}"><i class="fa fa-shopping-cart"></i></a>
+										<a class="beta-btn primary" href="{{ route('product', $productByType->id) }}">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
 								</div>
@@ -104,7 +104,7 @@
 							<div class="col-sm-4">
 								<div class="single-item">
 									<div class="single-item-header">
-										<a href="product.html"><img src="source/assets/dest/images/products/1.jpg" alt=""></a>
+										<a href="{{ route('product',$productByType->id) }}"><img src="source/assets/dest/images/products/1.jpg" alt=""></a>
 									</div>
 									<div class="single-item-body">
 										<p class="single-item-title">Sample Woman Top</p>

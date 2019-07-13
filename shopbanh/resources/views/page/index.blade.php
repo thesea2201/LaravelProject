@@ -49,23 +49,23 @@
 									<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									@endif
 									<div class="single-item-header">
-										<a href="product.html"><img src="source/image/product/{{$newProduct->image}}" alt="{{$newProduct->name}}"></a>
+										<a href="{{ route('product', $newProduct->id) }}"><img src="source/image/product/{{ $newProduct->image }}" alt="{{ $newProduct->name }}" title="{{ $newProduct->name }}"></a>
 									</div>
 									<div class="single-item-body">
-										<p class="single-item-title">{{$newProduct->name}}</p>
+										<p class="single-item-title">{{ $newProduct->name }}</p>
 										<p class="single-item-price">
 											@if($newProduct->promotion_price == 0)
-											<span>{{$newProduct->unit_price}}đ</span>
+											<span>{{ number_format($newProduct->unit_price) }}đ</span>
 											@else
 
-											<span class="flash-del">{{$newProduct->unit_price}}đ</span>
-											<span class="flash-sale">{{$newProduct->promotion_price}}đ</span>
+											<span class="flash-del">{{ number_format($newProduct->unit_price) }}đ</span>
+											<span class="flash-sale">{{ number_format($newProduct->promotion_price) }}đ</span>
 											@endif
 										</p>
 									</div>
 									<div class="single-item-caption">
-										<a class="add-to-cart pull-left" href="shopping_cart.html"><i class="fa fa-shopping-cart"></i></a>
-										<a class="beta-btn primary" href="product.html">Details <i class="fa fa-chevron-right"></i></a>
+										<a class="add-to-cart pull-left" href="{{ route('add-to-cart',$newProduct->id) }}"><i class="fa fa-shopping-cart"></i></a>
+										<a class="beta-btn primary" href="{{ route('product',$newProduct->id) }}">Details <i class="fa fa-chevron-right"></i></a>
 										<div class="clearfix"></div>
 									</div>
 								</div>
@@ -93,13 +93,13 @@
 								<div class="single-item">
 									<div class="ribbon-wrapper"><div class="ribbon sale">Sale</div></div>
 									<div class="single-item-header">
-										<a href="product.html"><img src="source/image/product/{{$promoProduct->image}}" alt="{{$promoProduct->name}}"></a>
+										<a href="{{ route('product', $promoProduct->id) }}"><img src="source/image/product/{{ $promoProduct->image }}" alt="{{ $promoProduct->name }}" title="{{ $promoProduct->name }}"></a>
 									</div>
 									<div class="single-item-body">
-										<p class="single-item-title">{{$promoProduct->name}}</p>
+										<p class="single-item-title">{{ $promoProduct->name}}</p>
 										<p class="single-item-price">
-											<span class="flash-del">{{$promoProduct->unit_price}}đ</span>
-											<span class="flash-sale">{{$promoProduct->promotion_price}}đ</span>
+											<span class="flash-del">{{ number_format($promoProduct->unit_price) }}đ</span>
+											<span class="flash-sale">{{ number_format($promoProduct->promotion_price) }}đ</span>
 										</p>
 									</div>
 									<div class="single-item-caption">
